@@ -104,7 +104,7 @@ function LanguageSwitcher() {
             transition={{ duration: 0.15 }}
             className="absolute right-0 top-[calc(100%+8px)] z-50 flex flex-col gap-2 border border-gray bg-background p-2 text-base font-normal text-gray"
           >
-            {["RU", "UA"].map((lang) => (
+            {["BN", "EN"].map((lang) => (
               <button
                 key={lang}
                 onClick={() => setOpen(false)}
