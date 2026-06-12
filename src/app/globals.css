@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-mono: "Fira Code", monospace;
+  --font-sans: "Fira Code", monospace;
+
+  /* Figma design tokens */
+  --color-background: #282c33;
+  --color-primary: #c778dd;
+  --color-gray: #abb2bf;
+  --color-white: #ffffff;
+  --color-border: #abb2bf;
+
+  /* Typography scale */
+  --text-sm: 1rem;
+  --text-lg: 1.5rem;
+  --text-xl: 2rem;
+
+  /* Square corners everywhere */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+
+  /* Tailwind semantic aliases */
+  --color-foreground: #ffffff;
+  --color-muted-foreground: #abb2bf;
+}
+
+:root {
+  --background: #282c33;
+  --foreground: #ffffff;
+  --primary: #c778dd;
+  --gray: #abb2bf;
+
+  /* Legacy aliases — kept so existing sections don't break until refactored */
+  --bg-body: #282c33;
+  --bg-card: #282c33;
+  --bg-nav: #282c33;
+  --bg-input: #282c33;
+  --text-primary: #ffffff;
+  --text-secondary: #abb2bf;
+  --text-muted: #abb2bf;
+  --text-dimmer: #abb2bf;
+  --border-subtle: #abb2bf;
+  --border-medium: #abb2bf;
+  --border-dark: #abb2bf;
+}
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: "Fira Code", monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: rgba(199, 120, 221, 0.35);
+    color: #ffffff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--gray);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+  }
+}
+
+/* Section heading — 32px Medium per Figma H2 */
+.section-heading {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 500;
+  color: var(--foreground);
+  font-family: "Fira Code", monospace;
+}
+
+.section-heading .hash {
+  color: var(--primary);
+}
+
+/* Outlined button — matches Figma Button component */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 8px 16px;
+  border: 1px solid var(--primary);
+  font-family: "Fira Code", monospace;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--foreground);
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-outline:hover {
+  color: var(--primary);
+}
+
+.btn-outline-gray {
+  border-color: var(--gray);
+  color: var(--gray);
+}
+
+.btn-outline-gray:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* 5×5 decorative dot grid */
+.dot-pattern {
+  background-image: radial-gradient(circle, var(--gray) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
