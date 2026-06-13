@@ -53,7 +53,7 @@ function Hero() {
                   ]}
                   wrapper="span"
                   speed={50}
-                  deletingSpeed={65}
+                  deletionSpeed={65}
                   repeat={Infinity}
                   cursor={true}
                   className="text-[#c778dd]"
