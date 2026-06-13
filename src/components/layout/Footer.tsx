@@ -1,62 +1,80 @@
-import { Github, Figma, Mail } from "lucide-react";
-import { profile } from "@/lib/data/profile";
+'use client';
+
+import { Code2, Globe, MessageCircle } from 'lucide-react';
+import { LogoMark } from '@/components/ui/Logo';
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--bg-body)] border-t border-[var(--border-dark)] py-10">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-8">
-          {/* Left: Branding */}
+    <footer className="w-full bg-[#282c33] ">
+      <div className="max-w-7xl p-6 lg:px-16 mx-auto">
+
+        <div className="h-[1px] bg-[#ABB2BF] mb-12"></div>
+
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-12">
+          {/* Left: Logo, Name, Email, Bio */}
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-[#a855f7] text-xl font-bold">✦</span>
-              <span className="text-[var(--text-primary)] font-bold text-lg">NazrulIslam</span>
-              <span className="text-[var(--text-muted)] text-sm ml-2">
-                {profile.email}
-              </span>
+            <div className="flex items-center gap-3 mb-6">
+              <LogoMark />
+              <span className="text-white font-mono text-lg">Nazrul Islam</span>
             </div>
-            <p className="text-[var(--text-muted)] text-sm">
-              CSE student &amp; full-stack developer
+            
+            <p className="text-[#ABB2BF] font-mono text-sm mb-4">
+              mhdnazrul511@gmail.com
+            </p>
+            
+            <p className="text-[#ABB2BF] font-mono text-sm max-w-sm">
+              Web designer and front-end developer
             </p>
           </div>
 
-          {/* Right: Media links */}
+          {/* Right: Media Links */}
           <div>
-            <p className="text-[var(--text-primary)] font-semibold mb-3">Media</p>
-            <div className="flex items-center gap-4">
+            <h3 className="text-white font-mono text-sm mb-6">
+              <span className="text-[#C778DD]">#</span>media
+            </h3>
+            
+            <div className="flex items-center gap-6">
               <a
-                href={profile.github}
+                href="https://github.com/nazrulislam"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors"
                 aria-label="GitHub"
-                className="text-[var(--text-muted)] hover:text-[#a855f7] transition-colors"
               >
-                <Github size={20} />
+                <Code2 size={20} />
               </a>
+              
               <a
                 href="https://figma.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors"
                 aria-label="Figma"
-                className="text-[var(--text-muted)] hover:text-[#a855f7] transition-colors"
               >
-                <Figma size={20} />
+                <Globe size={20} />
               </a>
+              
               <a
-                href={`mailto:${profile.email}`}
-                aria-label="Email"
-                className="text-[var(--text-muted)] hover:text-[#a855f7] transition-colors"
+                href="https://discord.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors"
+                aria-label="Discord"
               >
-                <Mail size={20} />
+                <MessageCircle size={20} />
               </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="mt-8 pt-6 border-t border-[var(--border-dark)] text-center">
-          <p className="text-[var(--text-dimmer)] text-xs font-mono">
-            © {new Date().getFullYear()} NazrulIslam. All rights reserved.
+        {/* ৩. নিচের লাইন (Bottom Line) */}
+        <div className="h-[1px] bg-[#ABB2BF] w-full mb-6"></div>
+
+        {/* Bottom: Copyright */}
+        <div className="text-center">
+          <p className="text-[#ABB2BF] font-mono text-xs">
+            © Copyright 2026. Made by Nazrul Islam
           </p>
         </div>
       </div>

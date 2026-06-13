@@ -1,78 +1,94 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { skillCategories } from "@/lib/data/skills";
-import { fadeUp, staggerContainer } from "@/lib/animations";
+import { SectionHeading } from '@/components/ui/SectionHeading';
+import { DotGrid } from '@/components/ui/DotGrid';
+
+const skillsData = [
+{
+category: 'Languages',
+skills: ['C++', 'C', 'C#', 'Java', 'PHP', 'Kotlin', 'TypeScript', 'Python', 'JavaScript']
+},
+{
+category: 'Frameworks',
+skills: ['React', 'Next.js', 'Vue', 'Express.js',  'Tailwind CSS']
+},
+{
+category: 'Databases',
+skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'Supabase']
+},
+{
+category: 'Tools',
+skills: ['VSCode',  'Git', 'Figma', 'Postman', 'Linux']
+},
+{
+category: 'DevOps & Cloud',
+skills: ['Vercel', 'Netlify', 'GitHub Actions']
+},
+{
+category: 'Backend/Others',
+skills: ['Node.js', ' REST API', 'JWT', 'OAuth']
+},
+{
+category: 'IoT & Hardware',
+skills: ['Arduino', 'ESP32', 'ESP8266']
+},
+{
+category: 'Design/Other',
+skills: ['HTML', 'CSS', 'Tailwind CSS', 'UI/UX Design']
+}
+];
+
+const OverlappingSquares = () => (
+  <div className="absolute inset-0 opacity-20">
+    <div className="absolute w-32 h-32 border border-[#ABB2BF] top-20 left-10 rotate-45"></div>
+    <div className="absolute w-40 h-40 border border-[#C778DD] top-40 left-0 rotate-12"></div>
+    <div className="absolute w-24 h-24 border border-[#ABB2BF] bottom-20 right-20 -rotate-12"></div>
+  </div>
+);
 
 export default function Skills() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section id="skills" className="py-24 relative">
-      <div
-        className="absolute left-4 top-1/3 w-24 h-24 dot-pattern opacity-30 pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute right-8 bottom-1/4 w-20 h-20 dot-pattern opacity-20 pointer-events-none"
-        aria-hidden="true"
-      />
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-16" ref={ref}>
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-        >
-          <motion.div variants={fadeUp} className="mb-12">
-            <h2 className="section-heading">
-              <span className="text-[#a855f7]">#</span>
-              <span className="text-[var(--text-primary)]">skills</span>
-            </h2>
-            <div className="mt-3 h-px w-48 bg-gradient-to-r from-[#a855f7]/50 to-transparent" />
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-            {skillCategories.map((category) => (
-              <motion.div
-                key={category.name}
-                variants={fadeUp}
-                className="border border-[var(--border-subtle)] bg-[var(--bg-card)] p-5 card-glow group"
-              >
-                <p className="text-[var(--text-primary)] font-bold text-sm mb-4 pb-3 border-b border-[var(--border-subtle)] group-hover:text-[#a855f7] transition-colors">
-                  {category.name}
-                </p>
-                <div className="flex flex-wrap gap-y-2 gap-x-2">
-                  {category.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="text-[var(--text-secondary)] text-xs font-mono hover:text-[var(--text-primary)] transition-colors"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+    <section id="skills" className="py-20 px-6 lg:px-16 max-w-7xl mx-auto">
+      <SectionHeading title="skills" />
+      
+      <div className="max-w-7xl mx-auto mt-16">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+          {/* Left: Decorative SVGs */}
+          <div className="col-span-1 relative h-80 hidden lg:block">
+            <DotGrid size={24} spacing={40} opacity={0.3} />
+            <OverlappingSquares />
           </div>
 
-          <motion.div
-            variants={fadeUp}
-            className="mt-16 flex items-center justify-center gap-6 opacity-30"
-            aria-hidden="true"
-          >
-            {[...Array(5)].map((_, i) => (
-              <div
-                key={i}
-                className="w-12 h-12 border border-[var(--border-medium)] rotate-45"
-                style={{ opacity: 0.3 + i * 0.14 }}
-              />
-            ))}
-          </motion.div>
-        </motion.div>
+          {/* Right: Skills Grid */}
+          <div className="col-span-1 lg:col-span-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {skillsData.map((skillGroup) => (
+                <div
+                  key={skillGroup.category}
+                  // Box padding removed to make the header border full-width
+                  className="border border-[#ABB2BF] bg-transparent hover:border-[#C778DD] transition-colors"
+                >
+                  {/* Added padding here and a bottom border to match the design */}
+                  <h4 className="text-white font-mono text-sm font-bold p-3 border-b border-[#ABB2BF]">
+                    {skillGroup.category}
+                  </h4>
+                  {/* Changed to flex-wrap so items flow horizontally, added padding */}
+                  <ul className="flex flex-wrap gap-x-1 gap-y-1 p-2">
+                    {skillGroup.skills.map((skill) => (
+                      <li
+                        key={skill}
+                        // added individual borders
+                        className="text-[#ABB2BF] border border-[#ABB2BF] px-1 font-mono text-sm leading-relaxed"
+                      >
+                        {skill}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

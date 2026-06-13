@@ -1,58 +1,37 @@
 import Navbar from "@/components/layout/Navbar";
-import SocialSidebar from "@/components/layout/SocialSidebar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/sections/Hero";
-import About from "@/sections/About";
-import Skills from "@/sections/Skills";
 import Projects from "@/sections/Projects";
+import Skills from "@/sections/Skills";
 import Blog from "@/sections/Blog";
+import About from "@/sections/About";
 import Contact from "@/sections/Contact";
-
-function Divider() {
-  return (
-    <div className="max-w-7xl mx-auto px-6 lg:px-16">
-      <div className="h-px bg-[var(--border-dark)]" />
-    </div>
-  );
-}
-
+import SocialSidebar from "@/components/layout/SocialSidebar";
 export default function Home() {
   return (
-    <main className="bg-[var(--bg-body)] min-h-screen">
+    <main className="bg-[#282c33] min-h-screen">
       {/* Navigation */}
       <Navbar />
-
       {/* Fixed social sidebar */}
       <SocialSidebar />
-
-      {/* Hero */}
+      {/* Hero Section */}
       <Hero />
-
-      <Divider />
-
-      {/* Projects */}
+      
+      {/* Projects Section */}
       <Projects />
-
-      <Divider />
-
-      {/* Skills */}
+      
+      {/* Skills Section */}
       <Skills />
-
-      <Divider />
-
-      {/* Blog */}
+      
+      {/* Blog Section */}
       <Blog />
-
-      <Divider />
-
-      {/* Contact */}
-      <Contact />
-
-      <Divider />
-
-      {/* About */}
+      
+      {/* About Section */}
       <About />
-
+      
+      {/* Contact Section */}
+      <Contact />
+      
       {/* Footer */}
       <Footer />
     </main>

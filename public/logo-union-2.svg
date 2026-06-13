@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 28 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Union">
+<mask id="path-1-outside-1_0_73" maskUnits="userSpaceOnUse" x="0" y="0" width="28" height="41" fill="black">
+<rect fill="white" width="28" height="41"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1 1H14H27V14V27V40H14H1V27H14V14H1V1Z"/>
+</mask>
+<path d="M1 1V0H0V1H1ZM27 1H28V0H27V1ZM27 40V41H28V40H27ZM1 40H0V41H1V40ZM1 27V26H0V27H1ZM14 27V28H15V27H14ZM14 14H15V13H14V14ZM1 14H0V15H1V14ZM14 1V0H1V1V2H14V1ZM27 1V0H14V1V2H27V1ZM27 14H28V1H27H26V14H27ZM27 27H28V14H27H26V27H27ZM27 40H28V27H27H26V40H27ZM14 40V41H27V40V39H14V40ZM14 40V39H1V40V41H14V40ZM1 40H2V27H1H0V40H1ZM1 27V28H14V27V26H1V27ZM14 14H13V27H14H15V14H14ZM1 14V15H14V14V13H1V14ZM1 1H0V14H1H2V1H1Z" fill="var(--stroke-0, #C778DD)" mask="url(#path-1-outside-1_0_73)"/>
+</g>
+</svg>

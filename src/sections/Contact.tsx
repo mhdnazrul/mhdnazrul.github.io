@@ -2,8 +2,27 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Github, Linkedin, Mail, Send, Twitter, Loader2 } from "lucide-react";
+import { Mail, Send, Loader2 } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/animations";
+
+// --- Custom SVG Icons for Brands ---
+const Github = ({ size = 24, className = "" }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A4.8 4.8 0 0 0 8 18v4"></path>
+  </svg>
+);
+
+const Linkedin = ({ size = 24, className = "" }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+  </svg>
+);
+
+const Twitter = ({ size = 24, className = "" }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+  </svg>
+);
 
 const socialLinks = [
   {
@@ -87,12 +106,15 @@ export default function Contact() {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
+          {/* --- Updated Heading Design to match image_d07f0e.png --- */}
           <motion.div variants={fadeUp} className="mb-12">
-            <h2 className="section-heading">
-              <span className="text-[var(--text-secondary)] font-normal">/</span>
-              <span className="text-[var(--text-primary)]">contacts</span>
-            </h2>
-            <p className="text-[var(--text-muted)] text-sm font-mono mt-1">Who am i?</p>
+            <div className="flex items-center gap-4">
+              <h2 className="text-white font-mono text-3xl font-medium">
+                <span className="text-[#C778DD]">#</span>contacts
+              </h2>
+              {/* Horizontal Line */}
+              <div className="h-[1px] bg-[#C778DD] w-[100%]"></div>          </div>
+            <p className="text-[var(--text-muted)] text-sm font-mono mt-4">Who am i?</p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -116,11 +138,11 @@ export default function Contact() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={label}
-                      className="flex items-center gap-3 text-[var(--text-secondary)] text-sm font-mono hover:text-[#a855f7] transition-colors group"
+                      className="flex items-center gap-3 text-[var(--text-secondary)] text-sm font-mono hover:text-[#C778DD] transition-colors group"
                     >
                       <Icon
                         size={15}
-                        className="text-[#a855f7] group-hover:scale-110 transition-transform"
+                        className="text-[#C778DD] group-hover:scale-110 transition-transform"
                       />
                       {value}
                     </a>
@@ -130,7 +152,7 @@ export default function Contact() {
 
               <div>
                 <h3 className="text-[var(--text-primary)] font-bold text-base mb-4">
-                  <span className="text-[#a855f7]">#</span>all-media
+                  <span className="text-[#C778DD]">#</span>all-media
                 </h3>
                 <div className="flex items-center gap-4">
                   {socialLinks.map(({ icon: Icon, href, label }) => (
@@ -140,9 +162,9 @@ export default function Contact() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={label}
-                      className="text-[var(--text-muted)] hover:text-[#a855f7] transition-colors hover:-translate-y-0.5"
+                      className="text-[var(--text-muted)] hover:text-[#C778DD] transition-colors hover:-translate-y-0.5"
                     >
-                      <Icon size={20} />
+                      <Icon size={20} className="" />
                     </a>
                   ))}
                 </div>
@@ -177,7 +199,7 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Your name"
                     disabled={status === "loading"}
-                    className="w-full bg-[var(--bg-input)] border border-[var(--border-medium)] px-4 py-3 text-[var(--text-primary)] text-sm font-mono placeholder-[var(--text-muted)] focus:outline-none focus:border-[#a855f7] transition-colors disabled:opacity-50"
+                    className="w-full bg-[var(--bg-input)] border border-[var(--border-medium)] px-4 py-3 text-[var(--text-primary)] text-sm font-mono placeholder-[var(--text-muted)] focus:outline-none focus:border-[#C778DD] transition-colors duration-200 disabled:opacity-50"
                     aria-required="true"
                   />
                 </div>
@@ -198,7 +220,7 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="your@email.com"
                     disabled={status === "loading"}
-                    className="w-full bg-[var(--bg-input)] border border-[var(--border-medium)] px-4 py-3 text-[var(--text-primary)] text-sm font-mono placeholder-[var(--text-muted)] focus:outline-none focus:border-[#a855f7] transition-colors disabled:opacity-50"
+                    className="w-full bg-[var(--bg-input)] border border-[var(--border-medium)] px-4 py-3 text-[var(--text-primary)] text-sm font-mono placeholder-[var(--text-muted)] focus:outline-none focus:border-[#C778DD] transition-colors duration-200 disabled:opacity-50"
                     aria-required="true"
                   />
                 </div>
@@ -220,7 +242,7 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Your message..."
                     disabled={status === "loading"}
-                    className="w-full bg-[var(--bg-input)] border border-[var(--border-medium)] px-4 py-3 text-[var(--text-primary)] text-sm font-mono placeholder-[var(--text-muted)] focus:outline-none focus:border-[#a855f7] transition-colors resize-none disabled:opacity-50"
+                    className="w-full bg-[var(--bg-input)] border border-[var(--border-medium)] px-4 py-3 text-[var(--text-primary)] text-sm font-mono placeholder-[var(--text-muted)] focus:outline-none focus:border-[#C778DD] transition-colors duration-200 disabled:opacity-50 resize-none"
                     aria-required="true"
                   />
                 </div>
@@ -252,7 +274,7 @@ export default function Contact() {
                   disabled={status === "loading" || status === "success"}
                   whileHover={status === "idle" ? { scale: 1.02 } : {}}
                   whileTap={status === "idle" ? { scale: 0.98 } : {}}
-                  className="w-full flex items-center justify-center gap-2 py-3 bg-[#a855f7] text-white font-mono text-sm font-semibold hover:bg-[#9333ea] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2 py-3 bg-[#C778DD] text-white font-mono text-sm font-semibold hover:bg-[#b560cb] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                   aria-label="Send message"
                 >
                   {status === "loading" ? (

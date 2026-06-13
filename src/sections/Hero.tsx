@@ -3,10 +3,13 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Download, Mail } from "lucide-react";
 import Image from "next/image";
+import { TypeAnimation } from "react-type-animation";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import { profile } from "@/lib/data/profile";
 
-export default function Hero() {
+export default Hero;
+
+function Hero() {
   const scrollToSection = (href: string) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -15,159 +18,133 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center relative overflow-hidden pt-20"
+      className="min-h-screen flex items-center relative overflow-hidden pt-24 pb-12 bg-[#282c33]"
     >
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#a855f7]/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-[#a855f7]/3 rounded-full blur-3xl" />
-      </div>
+      {/* 
+        পরিবর্তন ১: max-w-7xl এর বদলে max-w-7xl এবং lg:px-0 ব্যবহার করা হয়েছে, 
+        যাতে এটি নেভবারের "EN" বাটনের একদম সমান লাইনে থাকে।
+      */}
+      <div className="py-20 px-6 lg:px-16 max-w-7xl mx-auto lg:px-0 w-full">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-4">
 
-      {/* Decorative Ellipse 8 — top-right area */}
-      <div
-        className="absolute top-8 right-8 w-32 h-32 pointer-events-none opacity-60 select-none"
-        aria-hidden="true"
-      >
-        <Image
-          src="/ellipse-8.png"
-          alt=""
-          fill
-          className="object-contain"
-          priority
-        />
-      </div>
-
-      {/* Decorative Ellipse 9 — bottom-left area */}
-      <div
-        className="absolute bottom-16 left-4 w-24 h-24 pointer-events-none opacity-50 select-none"
-        aria-hidden="true"
-      >
-        <Image
-          src="/ellipse-9.png"
-          alt=""
-          fill
-          className="object-contain"
-        />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-16 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
+          {/* Left Content: Text - বাম দিকে জায়গা বাড়ানো হয়েছে (lg:w-[60%]) */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
+            className="w-full lg:w-[60%] z-10"
           >
-            {/* Tag line */}
-            <motion.div
-              variants={fadeUp}
-              className="flex items-center gap-2 mb-6"
-            >
-              <span className="w-2 h-2 bg-[#22c55e] rounded-full animate-pulse" />
-              <span className="text-[var(--text-secondary)] text-sm font-mono">
-                Currently working on{" "}
-                <span className="text-[var(--text-primary)] font-semibold">{profile.currentWork}</span>
-              </span>
-            </motion.div>
-
-            {/* Main heading */}
+            {/* 
+              পরিবর্তন ২: ফন্ট সাইজ একটু রেস্পন্সিভ করা হয়েছে এবং 
+              whitespace-nowrap দেওয়া হয়েছে যেন টেক্সট দুই লাইন না হয়। 
+            */}
             <motion.h1
               variants={fadeUp}
-              className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6"
+              className="text-[28px] md:text-4xl lg:text-5xl font-semibold leading-tight mb-8 font-mono text-white min-h-[90px] md:min-h-[100px]"
             >
-              <span className="text-[var(--text-primary)]">NazrulIslam is a </span>
-              <span className="text-[#a855f7]">web developer</span>
-              <span className="text-[var(--text-primary)]"> and </span>
-              <br />
-              <span className="text-[#a855f7]">software engineer</span>
+              Nazrul is a <br />
+              <span className="whitespace-nowrap">
+                <TypeAnimation
+                  sequence={[
+                    "Full-Stack Developer", 2000,
+                    "UI/UX Designer", 2000,
+                    "Problem Solver", 2000,
+                    "IoT Enthusiast", 2000,
+                  ]}
+                  wrapper="span"
+                  speed={50}
+                  deletingSpeed={65}
+                  repeat={Infinity}
+                  cursor={true}
+                  className="text-[#c778dd]"
+                />
+              </span>
             </motion.h1>
 
-            {/* Bio */}
+            {/* Subtitle */}
             <motion.p
               variants={fadeUp}
-              className="text-[var(--text-secondary)] text-base leading-relaxed mb-8 max-w-lg font-mono"
+              className="text-[#ABB2BF] text-base leading-relaxed mb-8 max-w-lg font-mono"
             >
-              {profile.bio}
+              He crafts responsive websites where technologies meet creativity
             </motion.p>
 
             {/* CTA Buttons */}
             <motion.div
               variants={fadeUp}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-4 mt-8"
             >
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => scrollToSection("#works")}
-                className="flex items-center gap-2 px-6 py-3 bg-[#a855f7] text-white font-mono text-sm font-semibold rounded-sm hover:bg-[#9333ea] transition-colors duration-200"
-                aria-label="View projects"
-              >
-                View Projects
-                <ArrowRight size={16} />
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
+              <button
                 onClick={() => scrollToSection("#contact")}
-                className="flex items-center gap-2 px-6 py-3 border border-[var(--border-medium)] text-[var(--text-secondary)] font-mono text-sm font-semibold rounded-sm hover:border-[#a855f7] hover:text-[#a855f7] transition-colors duration-200"
+                className="flex items-center gap-2 px-6 py-2 border border-[#c778dd] text-white font-mono text-sm hover:bg-[#c778dd]/10 transition-colors duration-200"
                 aria-label="Contact me"
               >
                 Contact me!!
-                <Mail size={16} />
-              </motion.button>
+              </button>
 
-              {/* Resume Download Button */}
-              <motion.a
+              <a
                 href={profile.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
                 aria-label="Download Resume"
-                className="flex items-center gap-2 px-6 py-3 border border-[#a855f7]/50 text-[#a855f7] font-mono text-sm font-semibold rounded-sm hover:bg-[#a855f7]/10 transition-colors duration-200"
+                className="flex items-center gap-2 px-6 py-2 border border-[#ABB2BF] text-[#ABB2BF] font-mono text-sm hover:border-white hover:text-white transition-colors duration-200"
               >
                 Resume
                 <Download size={16} />
-              </motion.a>
+              </a>
             </motion.div>
           </motion.div>
 
-          {/* Right: Profile Image */}
+          {/* 
+            Right Content: Image & Graphics 
+            পরিবর্তন ৩: ইমেজ সেকশনকে lg:w-[40%] দিয়ে lg:items-end এর মাধ্যমে ডান দিকে চাপানো হয়েছে।
+          */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative flex justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="relative w-full lg:w-[40%] flex flex-col items-center lg:items-end mt-10 lg:mt-0"
           >
-            {/* Decorative dot-grid */}
-            <div
-              className="absolute -top-8 -right-8 w-32 h-32 opacity-30 dot-pattern"
-              aria-hidden="true"
-            />
-            <div
-              className="absolute -bottom-8 -left-8 w-24 h-24 opacity-20 dot-pattern"
-              aria-hidden="true"
-            />
+            <div className="relative flex flex-col items-center">
+              {/* Left Geometric Graphic Outline */}
+              <div className="absolute top-10 -left-6 md:-left-8 z-0 opacity-80">
+                <svg width="120" height="120" viewBox="0 0 155 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="0.5" y="77.5" width="77" height="77" stroke="#C778DD" />
+                  <rect x="77.5" y="0.5" width="77" height="77" stroke="#C778DD" />
+                  <rect x="38.5" y="38.5" width="77" height="77" stroke="#C778DD" />
+                </svg>
+              </div>
 
-            {/* Profile container */}
-            <div className="relative w-72 h-72 lg:w-80 lg:h-80">
-              <div className="absolute inset-0 rounded-full border border-[#a855f7]/20" />
-              <div className="absolute inset-4 rounded-full border border-[#a855f7]/10" />
-              <div className="absolute inset-0 bg-gradient-to-br from-[#a855f7]/20 to-transparent rounded-[60%_40%_30%_70%/60%_30%_70%_40%]" />
+              {/* Right Dot Grid Pattern */}
+              <div className="absolute bottom-16 -right-4 md:-right-8 z-0 opacity-80">
+                <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {[...Array(5)].map((_, i) =>
+                    [...Array(5)].map((_, j) => (
+                      <circle key={`${i}-${j}`} cx={10 + j * 16} cy={10 + i * 16} r="2" fill="#ABB2BF" />
+                    ))
+                  )}
+                </svg>
+              </div>
 
-              <div className="absolute inset-8 rounded-[60%_40%_30%_70%/60%_30%_70%_40%] overflow-hidden border-2 border-[#a855f7]/30">
+              {/* Profile Image */}
+              <div className="relative z-10 w-[280px] h-[320px] md:w-[320px] md:h-[380px]">
                 <Image
                   src="/nazrulislam_profile.png"
-                  alt="NazrulIslam - Developer"
+                  alt="Nazrul Islam"
                   fill
-                  className="object-cover object-top"
+                  className="object-contain object-bottom grayscale hover:grayscale-0 transition-all duration-500"
                   priority
                 />
               </div>
 
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-[#a855f7] rounded-full opacity-60 blur-sm" />
-              <div className="absolute -bottom-2 -left-4 w-5 h-5 bg-[#a855f7] rounded-full opacity-40 blur-sm" />
+              {/* Status Box */}
+              <div className="relative z-20 w-[280px] md:w-[320px] -mt-[1px] bg-[#282c33] border border-[#ABB2BF] p-2 flex items-center gap-3">
+                <div className="w-4 h-4 bg-[#c778dd] shrink-0" />
+                <p className="text-[#ABB2BF] font-mono text-sm">
+                  Currently working on{" "}
+                  <span className="text-white font-bold">{profile.currentWork || "Portfolio"}</span>
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -176,21 +153,27 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-20 border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 max-w-xl relative"
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="mt-24 mx-auto border border-[#ABB2BF] p-6 max-w-x relative flex flex-col items-center"
         >
-          <span className="text-[#a855f7] text-3xl absolute -top-4 left-4 select-none">
-            "
-          </span>
-          <p className="text-[var(--text-primary)] font-mono text-sm leading-relaxed pl-4">
+          <div className="absolute -top-3 left-4 bg-[#282c33] px-2 text-[#ABB2BF]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 8H6C6 5.79 7.79 4 10 4V2C6.69 2 4 4.69 4 8V12H10V8ZM20 8H16C16 5.79 17.79 4 20 4V2C16.69 2 14 4.69 14 8V12H20V8Z" fill="#ABB2BF" />
+            </svg>
+          </div>
+          <p className="text-white font-mono text-lg text-center font-medium">
             With great power comes great electricity bill
           </p>
-          <p className="text-[var(--text-muted)] font-mono text-sm mt-3 text-right">
-            — Dr. Who
-          </p>
-          <span className="text-[#a855f7] text-3xl absolute -bottom-5 right-8 select-none">
-            "
-          </span>
+          <div className="absolute -bottom-3 right-4 bg-[#282c33] px-2 text-[#ABB2BF]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="rotate-180">
+              <path d="M10 8H6C6 5.79 7.79 4 10 4V2C6.69 2 4 4.69 4 8V12H10V8ZM20 8H16C16 5.79 17.79 4 20 4V2C16.69 2 14 4.69 14 8V12H20V8Z" fill="#ABB2BF" />
+            </svg>
+          </div>
+          <div className="self-end mt-4 border-t border-[#ABB2BF] pt-2">
+            <p className="text-[#ABB2BF] font-mono text-sm">
+              — Dr. Who
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

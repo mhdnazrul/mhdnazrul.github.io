@@ -1,167 +1,215 @@
-"use client";
+'use client';
 
-import { useState, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
-import { ExternalLink, Github, ArrowRight, ChevronUp } from "lucide-react";
-import { projects } from "@/lib/data/projects";
-import { fadeUp, staggerContainer } from "@/lib/animations";
+import { SectionHeading } from '@/components/ui/SectionHeading';
 
-const INITIAL_DISPLAY = 3;
+interface ProjectTag {
+  name: string;
+  color: 'orange' | 'red' | 'green' | 'yellow';
+}
 
-function ProjectCard({ project }: { project: (typeof projects)[0] }) {
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  image?: string;
+  tags: string[];
+  techs: string[];
+  buttons: Array<{ label: string; href: string }>;
+  category: 'complete-apps' | 'small-projects';
+}
+
+const projects: Project[] = [
+  {
+    id: 'chert-nodes',
+    title: 'ChertNodes',
+    description: 'Minecraft servers hosting',
+    techs: ['HTML', 'SCSS', 'Python', 'Flask'],
+    tags: ['Minecraft', 'Devops', 'Saas'],
+    buttons: [
+      { label: 'Live', href: '#' },
+      { label: 'Cached', href: '#' },
+    ],
+    category: 'complete-apps',
+  },
+  {
+    id: 'kahoot-answers',
+    title: 'Kahoot Answers Viewer',
+    description: 'Get answers to your kahoot quiz',
+    techs: ['CSS', 'Express', 'Node.js'],
+    tags: [],
+    buttons: [{ label: 'Live', href: '#' }],
+    category: 'complete-apps',
+  },
+  {
+    id: 'protectx',
+    title: 'ProtectX',
+    description: 'Discord anti-crash bot',
+    techs: ['React', 'Express', 'Discord.js', 'Node.js'],
+    tags: [],
+    buttons: [{ label: 'Cached', href: '#' }],
+    category: 'complete-apps',
+  },
+  {
+    id: 'kotik-bot',
+    title: 'Kotik Bot',
+    description: 'Multi-functional discord bot',
+    techs: ['HTML', 'CSS', 'JS'],
+    tags: [],
+    buttons: [{ label: 'Live', href: '#' }],
+    category: 'complete-apps',
+  },
+  {
+    id: 'portfolio',
+    title: 'Portfolio',
+    description: "You're using it rn",
+    techs: ['Vue', 'TS', 'Less'],
+    tags: [],
+    buttons: [{ label: 'Github', href: '#' }],
+    category: 'complete-apps',
+  },
+  {
+    id: 'bot-boilerplate',
+    title: 'Bot boilerplate',
+    description: 'Start creating scalable discord.js bot with typescript',
+    techs: ['Discord.js', 'TS', 'JS'],
+    tags: [],
+    buttons: [{ label: 'Github', href: '#' }],
+    category: 'small-projects',
+  },
+  {
+    id: 'my-blog',
+    title: 'My blog',
+    description: 'Front-end of my future blog website written in vue',
+    techs: ['VUE', 'CSS', 'JS'],
+    tags: [],
+    buttons: [{ label: 'Github', href: '#' }],
+    category: 'small-projects',
+  },
+  {
+    id: 'chess-pro',
+    title: 'Chess pro',
+    description: 'Figma landing page about service for viewing chess',
+    techs: ['Figma'],
+    tags: [],
+    buttons: [{ label: 'Figma', href: '#' }],
+    category: 'small-projects',
+  },
+  {
+    id: 'crash-protect',
+    title: 'Crash protect website',
+    description: 'Figma landing page for website about anti-raid, anti-crash discord bot',
+    techs: ['Figma'],
+    tags: [],
+    buttons: [{ label: 'Figma', href: '#' }],
+    category: 'small-projects',
+  },
+  {
+    id: 'css-experiments',
+    title: 'CSS experiments',
+    description: 'Collection of my different little projects in css',
+    techs: ['HTML', 'CSS'],
+    tags: [],
+    buttons: [{ label: 'Live', href: '#' }],
+    category: 'small-projects',
+  },
+  {
+    id: 'web-dev-nvim',
+    title: 'Web Dev nvim config',
+    description: 'Config for neovim perfect for web developer',
+    techs: ['Lua', 'NeoVim'],
+    tags: [],
+    buttons: [{ label: 'Github', href: '#' }],
+    category: 'small-projects',
+  },
+  {
+    id: 'ooku',
+    title: 'Ooku',
+    description: 'Simple link shortener with auth',
+    techs: ['Python', 'Quart', 'HTML'],
+    tags: [],
+    buttons: [{ label: 'Live', href: '#' }],
+    category: 'small-projects',
+  },
+  {
+    id: 'school-website',
+    title: 'School website',
+    description: 'Figma template website for my school',
+    techs: ['Figma'],
+    tags: [],
+    buttons: [{ label: 'Figma', href: '#' }],
+    category: 'small-projects',
+  },
+];
+
+function ProjectCard({ project }: { project: Project }) {
   return (
-    <motion.article
-      variants={fadeUp}
-      layout
-      className="border border-[var(--border-subtle)] bg-[var(--bg-card)] flex flex-col group card-glow"
-      aria-label={`Project: ${project.title}`}
-    >
-      <div className="px-4 pt-4 pb-2 flex flex-wrap gap-2 border-b border-[var(--border-dark)]">
-        {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-[var(--text-muted)] text-xs font-mono hover:text-[var(--text-secondary)] transition-colors"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
+    <div className="border border-[#ABB2BF] bg-[#282c33] overflow-hidden hover:border-[#C778DD] transition-colors">
+      {/* Image or placeholder */}
+      {project.image ? (
+        <div className="h-40 bg-gray-700 overflow-hidden">
+          <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+        </div>
+      ) : (
+        <div className="h-40 bg-[#3a3f47] flex items-center justify-center text-[#ABB2BF] text-sm">
+          [Project Image]
+        </div>
+      )}
 
-      <div className="p-4 flex-1 flex flex-col">
-        <h3 className="text-[var(--text-primary)] font-bold text-sm mb-2 group-hover:text-[#a855f7] transition-colors">
-          {project.title}
-        </h3>
-        <p className="text-[var(--text-muted)] text-xs font-mono leading-5 flex-1 mb-4">
-          {project.description}
-        </p>
+      <div className="p-6">
+        {/* Tech stack tags */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.techs.map((tech) => (
+            <span key={tech} className="text-[11px] font-mono text-[#ABB2BF] border border-[#ABB2BF] px-2 py-1">
+              {tech}
+            </span>
+          ))}
+        </div>
 
-        <div className="flex gap-2 flex-wrap">
-          {project.liveUrl && (
+        {/* Title */}
+        <h3 className="text-lg font-mono font-bold text-white mb-2">{project.title}</h3>
+
+        {/* Description */}
+        <p className="text-[#ABB2BF] font-mono text-sm mb-6">{project.description}</p>
+
+        {/* Buttons */}
+        <div className="flex flex-wrap gap-3">
+          {project.buttons.map((button) => (
             <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Live demo for ${project.title}`}
-              className="flex items-center gap-1.5 px-3 py-1.5 border border-[var(--border-medium)] text-[var(--text-secondary)] text-xs font-mono hover:border-[#a855f7] hover:text-[#a855f7] transition-colors"
+              key={button.label}
+              href={button.href}
+              className="border border-[#C778DD] text-[#C778DD] px-4 py-2 font-mono text-sm hover:bg-[#C778DD] hover:text-[#282c33] transition-colors"
             >
-              Live
-              <ExternalLink size={11} />
+              {button.label} {'<->'}
             </a>
-          )}
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`GitHub repo for ${project.title}`}
-              className="flex items-center gap-1.5 px-3 py-1.5 border border-[var(--border-medium)] text-[var(--text-secondary)] text-xs font-mono hover:border-[#a855f7] hover:text-[#a855f7] transition-colors"
-            >
-              Github
-              <Github size={11} />
-            </a>
-          )}
+          ))}
         </div>
       </div>
-    </motion.article>
+    </div>
   );
 }
 
 export default function Projects() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [showAll, setShowAll] = useState(false);
-
-  const featured = projects.filter((p) => p.category === "featured");
-  const other = projects.filter((p) => p.category === "other");
-
-  // Initially show all featured but limit other projects
-  const visibleOther = showAll ? other : other.slice(0, Math.max(0, INITIAL_DISPLAY - featured.length));
+  const completeApps = projects.filter((p) => p.category === 'complete-apps');
+  const smallProjects = projects.filter((p) => p.category === 'small-projects');
 
   return (
-    <section id="works" className="py-24 relative">
-      <div className="max-w-7xl mx-auto px-6 lg:px-16" ref={ref}>
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-        >
-          <motion.div variants={fadeUp} className="mb-12">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="section-heading">
-                  <span className="text-[var(--text-secondary)] font-normal">/</span>
-                  <span className="text-[var(--text-primary)]">projects</span>
-                </h2>
-                <p className="text-[var(--text-muted)] text-sm font-mono mt-1">
-                  List of my projects
-                </p>
-              </div>
-              <button
-                onClick={() => setShowAll((v) => !v)}
-                className="hidden md:flex items-center gap-2 text-[var(--text-secondary)] text-sm font-mono hover:text-[#a855f7] transition-colors group"
-                aria-label={showAll ? "Show fewer projects" : "View all projects"}
-              >
-                {showAll ? (
-                  <>
-                    Show Less
-                    <ChevronUp size={14} className="group-hover:-translate-y-0.5 transition-transform" />
-                  </>
-                ) : (
-                  <>
-                    View All
-                    <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-                  </>
-                )}
-              </button>
-            </div>
-          </motion.div>
+    <section id="works" className="py-20 px-6 lg:px-16 max-w-7xl mx-auto">
+      <div className="mb-16">
+        <SectionHeading title="complete-apps" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {completeApps.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+      </div>
 
-          {/* Featured / Complete Apps */}
-          <motion.h3 variants={fadeUp} className="text-[var(--text-primary)] font-bold text-base mb-5">
-            <span className="text-[#a855f7]">#</span>complete-apps
-          </motion.h3>
-          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-            <AnimatePresence>
-              {featured.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </AnimatePresence>
-          </motion.div>
-
-          {/* Other / Small Projects */}
-          <motion.h3 variants={fadeUp} className="text-[var(--text-primary)] font-bold text-base mb-5">
-            <span className="text-[#a855f7]">#</span>small-projects
-          </motion.h3>
-          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <AnimatePresence>
-              {visibleOther.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </AnimatePresence>
-          </motion.div>
-
-          {/* View All / Show Less (mobile + bottom) */}
-          <motion.div variants={fadeUp} className="mt-10 flex justify-center">
-            <motion.button
-              onClick={() => setShowAll((v) => !v)}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="flex items-center gap-2 px-6 py-2.5 border border-[var(--border-medium)] text-[var(--text-secondary)] text-sm font-mono hover:border-[#a855f7] hover:text-[#a855f7] transition-colors rounded-sm"
-            >
-              {showAll ? (
-                <>
-                  <ChevronUp size={14} />
-                  Show Less
-                </>
-              ) : (
-                <>
-                  <ArrowRight size={14} />
-                  View All Projects
-                </>
-              )}
-            </motion.button>
-          </motion.div>
-        </motion.div>
+      <div>
+        <SectionHeading title="small-projects" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {smallProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
       </div>
     </section>
   );
