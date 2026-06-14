@@ -162,7 +162,7 @@ function Hero() {
                             {/* Profile Image */}
                             <div className="relative z-10 w-[280px] h-[320px] md:w-[320px] md:h-[380px]">
                                 <Image
-                                    src="/nazrulislam_profile.png"
+                                    src="/profile.png"
                                     alt="Nazrul Islam"
                                     fill
                                     className="object-contain object-bottom grayscale hover:grayscale-0 transition-all duration-500"
