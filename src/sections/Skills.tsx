@@ -1,58 +1,12 @@
-'use client';
-
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { DotGrid } from '@/components/ui/DotGrid';
-
-const skillsData = [
-    {
-        category: 'Languages',
-        skills: [
-            'C++',
-            'C',
-            'C#',
-            'Java',
-            'PHP',
-            'Kotlin',
-            'TypeScript',
-            'Python',
-            'JavaScript',
-        ],
-    },
-    {
-        category: 'Frameworks',
-        skills: ['React', 'Next.js', 'Vue', 'Express.js', 'Tailwind CSS'],
-    },
-    {
-        category: 'Databases',
-        skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'Supabase'],
-    },
-    {
-        category: 'Tools',
-        skills: ['VSCode', 'Git', 'Figma', 'Postman', 'Linux'],
-    },
-    {
-        category: 'DevOps & Cloud',
-        skills: ['Vercel', 'Netlify', 'GitHub Actions'],
-    },
-    {
-        category: 'Backend/Others',
-        skills: ['Node.js', ' REST API', 'JWT', 'OAuth'],
-    },
-    {
-        category: 'IoT & Hardware',
-        skills: ['Arduino', 'ESP32', 'ESP8266'],
-    },
-    {
-        category: 'Design/Other',
-        skills: ['HTML', 'CSS', 'Tailwind CSS', 'UI/UX Design'],
-    },
-];
+import { skillsData } from '@/lib/data/skills';
 
 const OverlappingSquares = () => (
     <div className="absolute inset-0 opacity-20">
-        <div className="absolute w-32 h-32 border border-[#ABB2BF] top-20 left-10 rotate-45"></div>
-        <div className="absolute w-40 h-40 border border-[#C778DD] top-40 left-0 rotate-12"></div>
-        <div className="absolute w-24 h-24 border border-[#ABB2BF] bottom-20 right-20 -rotate-12"></div>
+        <div className="absolute w-32 h-32 border border-[var(--border-subtle)] top-20 left-10 rotate-45"></div>
+        <div className="absolute w-40 h-40 border border-[var(--primary)] top-40 left-0 rotate-12"></div>
+        <div className="absolute w-24 h-24 border border-[var(--border-subtle)] bottom-20 right-20 -rotate-12"></div>
     </div>
 );
 
@@ -76,10 +30,10 @@ export default function Skills() {
                                 <div
                                     key={skillGroup.category}
                                     // Box padding removed to make the header border full-width
-                                    className="border border-[#ABB2BF] bg-transparent hover:border-[#C778DD] transition-colors"
+                                    className="border border-[var(--border-subtle)] bg-transparent hover:border-[var(--primary)] transition-colors"
                                 >
                                     {/* Added padding here and a bottom border to match the design */}
-                                    <h4 className="text-white font-mono text-sm font-bold p-3 border-b border-[#ABB2BF]">
+                                    <h4 className="text-[var(--text-primary)] font-mono text-sm font-bold p-3 border-b border-[var(--border-subtle)]">
                                         {skillGroup.category}
                                     </h4>
                                     {/* Changed to flex-wrap so items flow horizontally, added padding */}
@@ -88,7 +42,7 @@ export default function Skills() {
                                             <li
                                                 key={skill}
                                                 // added individual borders
-                                                className="text-[#ABB2BF] border border-[#ABB2BF] px-1 font-mono text-sm leading-relaxed"
+                                                className="text-[var(--text-secondary)] border border-[var(--border-subtle)] px-1 font-mono text-sm leading-relaxed"
                                             >
                                                 {skill}
                                             </li>

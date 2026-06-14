@@ -1,42 +1,49 @@
-export interface SkillCategory {
-    name: string;
+export interface SkillGroup {
+    category: string;
     skills: string[];
 }
 
-export const skillCategories: SkillCategory[] = [
+export const skillsData: SkillGroup[] = [
     {
-        name: 'Languages',
-        skills: ['TypeScript', 'JavaScript', 'Python', 'Java', 'C', 'C++'],
-    },
-    {
-        name: 'Frontend',
+        category: 'Languages',
         skills: [
-            'React',
-            'Next.js',
-            'HTML5',
-            'CSS3',
-            'Tailwind CSS',
-            'Framer Motion',
+            'C++',
+            'C',
+            'C#',
+            'Java',
+            'PHP',
+            'Kotlin',
+            'TypeScript',
+            'Python',
+            'JavaScript',
         ],
     },
     {
-        name: 'Backend',
-        skills: ['Node.js', 'Express.js', 'Flask', 'REST APIs', 'GraphQL'],
+        category: 'Frameworks',
+        skills: ['React', 'Next.js', 'Vue', 'Express.js', 'Tailwind CSS'],
     },
     {
-        name: 'Databases',
-        skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'SQLite', 'Redis'],
+        category: 'Databases',
+        skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'Supabase'],
     },
     {
-        name: 'Tools',
-        skills: [
-            'Git',
-            'GitHub',
-            'VS Code',
-            'Linux',
-            'Docker',
-            'Figma',
-            'Postman',
-        ],
+        category: 'Tools',
+        skills: ['VSCode', 'Git', 'Figma', 'Postman', 'Linux'],
+    },
+    {
+        category: 'DevOps & Cloud',
+        skills: ['Vercel', 'Netlify', 'GitHub Actions'],
+    },
+    {
+        category: 'Backend/Others',
+        skills: ['Node.js', ' REST API', 'JWT', 'OAuth'],
+    },
+    {
+        category: 'IoT & Hardware',
+        skills: ['Arduino', 'ESP32', 'ESP8266'],
+    },
+    {
+        category: 'Design/Other',
+        skills: ['HTML', 'CSS', 'Tailwind CSS', 'UI/UX Design'],
     },
 ];

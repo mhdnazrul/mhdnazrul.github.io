@@ -1,73 +1,42 @@
 export interface BlogPost {
-    id: number;
-    slug: string;
+    id: string;
     title: string;
     excerpt: string;
-    date: string;
-    readTime: string;
     tags: string[];
-    thumbnail?: string;
+    href: string;
 }
 
 export const blogPosts: BlogPost[] = [
     {
-        id: 1,
-        slug: 'getting-started-with-nextjs',
-        title: 'Getting Started with Next.js App Router',
+        id: '1',
+        title: 'Competitive Programming: From C++ Logic to Real-World Code',
         excerpt:
-            'A deep dive into the new Next.js App Router, server components, and how they change the way we build React applications.',
-        date: '2024-12-01',
-        readTime: '5 min read',
-        tags: ['Next.js', 'React', 'Web Dev'],
+            'How mastering algorithmic thinking helps in building better software architecture and solving complex backend challenges.',
+        tags: ['C++', 'Algorithms', 'Logic'],
+        href: '#',
     },
     {
-        id: 2,
-        slug: 'typescript-tips-tricks',
-        title: 'TypeScript Tips Every Developer Should Know',
+        id: '2',
+        title: 'The Power of Next.js for Scalable Full-Stack Apps',
         excerpt:
-            'Explore advanced TypeScript patterns — from utility types to discriminated unions — that will make your code safer and more expressive.',
-        date: '2024-11-15',
-        readTime: '7 min read',
-        tags: ['TypeScript', 'JavaScript'],
+            'Deep dive into why I chose Next.js and TypeScript for building complex platforms like CF Clash and Shopfinity.',
+        tags: ['Next.js', 'Full-stack', 'TypeScript'],
+        href: '#',
     },
     {
-        id: 3,
-        slug: 'mastering-tailwind-css',
-        title: 'Mastering Tailwind CSS in Production',
+        id: '3',
+        title: 'IoT & Hardware: Building Smarter Solutions with ESP8266',
         excerpt:
-            'Learn how to structure large Tailwind CSS codebases, use design tokens, and build a consistent design system.',
-        date: '2024-10-28',
-        readTime: '6 min read',
-        tags: ['CSS', 'Tailwind', 'Design'],
+            'My journey of bridging software with hardware, from automated dustbins to solar tracking systems.',
+        tags: ['IoT', 'Hardware', 'ESP8266'],
+        href: '#',
     },
     {
-        id: 4,
-        slug: 'data-structures-for-developers',
-        title: 'Essential Data Structures for CSE Students',
+        id: '4',
+        title: 'Windows Productivity: Optimizing Workflow with PowerShell',
         excerpt:
-            'A practical guide to arrays, linked lists, trees, and graphs with real-world examples and implementation tips.',
-        date: '2024-10-10',
-        readTime: '10 min read',
-        tags: ['DSA', 'Computer Science', 'Algorithms'],
-    },
-    {
-        id: 5,
-        slug: 'framer-motion-animations',
-        title: 'Beautiful Page Animations with Framer Motion',
-        excerpt:
-            'Create smooth, GPU-accelerated animations in React using Framer Motion — from simple fades to complex orchestrated sequences.',
-        date: '2024-09-20',
-        readTime: '8 min read',
-        tags: ['Animation', 'React', 'UX'],
-    },
-    {
-        id: 6,
-        slug: 'linux-for-developers',
-        title: 'Linux Workflow for Developers',
-        excerpt:
-            'Set up a powerful Linux development environment with the best tools, terminal configurations, and productivity shortcuts.',
-        date: '2024-09-05',
-        readTime: '9 min read',
-        tags: ['Linux', 'DevOps', 'Tools'],
+            'How I use Winget, PowerShell, and system maintenance tools to keep my Dell Latitude 7400 running at peak performance.',
+        tags: ['Windows', 'DevOps', 'Productivity'],
+        href: '#',
     },
 ];

@@ -1,5 +1,12 @@
 import type { Metadata } from 'next';
+import { Fira_Code } from 'next/font/google';
 import '@/app/globals.css';
+
+const firaCode = Fira_Code({
+    subsets: ['latin'],
+    weight: ['400', '500', '600', '700'],
+    variable: '--font-fira-code',
+});
 
 export const metadata: Metadata = {
     title: 'Nazrul Islam | Portfolio',
@@ -37,20 +44,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <head>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link
-                    rel="preconnect"
-                    href="https://fonts.gstatic.com"
-                    crossOrigin="anonymous"
-                />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap"
-                    rel="stylesheet"
-                />
-            </head>
-            <body className="bg-background text-white font-mono antialiased">
+        <html lang="en" className={`${firaCode.variable}`}>
+            <body className="bg-[var(--background)] text-[var(--text-primary)] font-mono antialiased">
                 {children}
             </body>
         </html>

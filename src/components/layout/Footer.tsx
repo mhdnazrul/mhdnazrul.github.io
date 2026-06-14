@@ -3,67 +3,14 @@
 import { LogoMark } from '@/components/ui/Logo';
 import Link from 'next/link';
 
-// --- Official SVG Icons ---
-
-const Github = ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-    </svg>
-);
-
-const Linkedin = ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
-);
-
-const Codeforces = ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-        <path d="M4.5 7.5C5.328 7.5 6 8.172 6 9v10.5c0 .828-.672 1.5-1.5 1.5s-1.5-.672-1.5-1.5V9c0-.828.672-1.5 1.5-1.5zm9-4.5c.828 0 1.5.672 1.5 1.5v15c0 .828-.672 1.5-1.5 1.5s-1.5-.672-1.5-1.5v-15c0-.828.672-1.5 1.5-1.5zm-4.5 4.5c.828 0 1.5.672 1.5 1.5v10.5c0 .828-.672 1.5-1.5 1.5s-1.5-.672-1.5-1.5V9c0-.828.672-1.5 1.5-1.5z" />
-    </svg>
-);
-
-const LeetCode = ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-        <path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.039-1.901l-2.609-2.636a5.055 5.055 0 0 0-2.445-1.337l2.467-2.503c.516-.514.498-1.366-.037-1.901-.535-.535-1.387-.552-1.902-.038l-10.1 10.101c-.981.982-1.494 2.337-1.494 3.834s.513 2.852 1.494 3.833l4.332 4.362a5.33 5.33 0 0 0 3.824 1.579c1.496 0 2.85-.512 3.831-1.494l2.609-2.637c.514-.514.496-1.365-.039-1.9-.535-.535-1.386-.553-1.901-.038zM23.311 7.426l-3.328-3.355c-.5-.5-1.332-.511-1.846-.025l-2.73 2.584c-.534.505-.555 1.344-.047 1.874.507.529 1.34.55 1.872.046l2.656-2.513 3.308 3.334c.513.518.497 1.378-.037 1.913-.535.536-1.388.552-1.902.039l-2.748-2.77c-.513-.518-1.353-.5-1.859.038-.507.538-.49 1.393.023 1.911l2.766 2.788c.98.99 2.334 1.503 3.829 1.503s2.85-.514 3.831-1.496c1.026-1.037 1.517-2.453 1.464-3.921-.051-1.465-.638-2.853-1.745-3.946H23.31z" />
-    </svg>
-);
-
-const Facebook = ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-    </svg>
-);
-
-const Twitter = ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-        <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
-    </svg>
-);
-
-const WhatsApp = ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
-    </svg>
-);
-
-const Discord = ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
-    </svg>
-);
-
-const MailIcon = ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-    </svg>
-);
+import { profile } from '@/lib/data/profile';
+import { SOCIAL_ICON_MAP } from '@/components/ui/icons';
 
 export default function Footer() {
     return (
-        <footer className="w-full bg-[#282c33] ">
+        <footer className="w-full bg-[var(--background)] ">
             <div className="max-w-7xl p-6 lg:px-16 mx-auto">
-                <div className="h-[1px] bg-[#ABB2BF] mb-12"></div>
+                <div className="h-[1px] bg-[var(--border-subtle)] mb-12"></div>
 
                 {/* Main Footer Content */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 mb-12">
@@ -71,49 +18,49 @@ export default function Footer() {
                     <div>
                         <div className="flex items-center gap-3 mb-6">
                             <LogoMark />
-                            <span className="text-white font-mono text-lg">
-                                Nazrul Islam
+                            <span className="text-[var(--text-primary)] font-mono text-lg">
+                                {profile.name}
                             </span>
                         </div>
 
-                        <p className="text-[#ABB2BF] font-mono text-sm mb-4">
+                        <p className="text-[var(--text-secondary)] font-mono text-sm mb-4">
                             Full-Stack Developer & Problem Solver.
                         </p>
                         <a
-                            href="mailto:mhdnazrul511@gmail.com"
-                            className="text-[#ABB2BF] font-mono text-sm hover:text-[#C778DD] transition-colors"
+                            href={`mailto:${profile.email}`}
+                            className="text-[var(--text-secondary)] font-mono text-sm hover:text-[var(--primary)] transition-colors"
                         >
-                            mhdnazrul511@gmail.com
+                            {profile.email}
                         </a>
                     </div>
 
                     {/* Quick Links */}
                     <div>
-                        <h3 className="text-white font-mono font-bold text-base mb-4">
+                        <h3 className="text-[var(--text-primary)] font-mono font-bold text-base mb-4">
                             Links
                         </h3>
                         <div className="flex flex-col gap-2">
                             <Link
                                 href="/"
-                                className="text-[#ABB2BF] font-mono text-sm hover:text-[#C778DD] transition-colors"
+                                className="text-[var(--text-secondary)] font-mono text-sm hover:text-[var(--primary)] transition-colors"
                             >
                                 Home
                             </Link>
                             <Link
                                 href="#works"
-                                className="text-[#ABB2BF] font-mono text-sm hover:text-[#C778DD] transition-colors"
+                                className="text-[var(--text-secondary)] font-mono text-sm hover:text-[var(--primary)] transition-colors"
                             >
                                 Works
                             </Link>
                             <Link
                                 href="#about-me"
-                                className="text-[#ABB2BF] font-mono text-sm hover:text-[#C778DD] transition-colors"
+                                className="text-[var(--text-secondary)] font-mono text-sm hover:text-[var(--primary)] transition-colors"
                             >
                                 About
                             </Link>
                             <Link
                                 href="#contact"
-                                className="text-[#ABB2BF] font-mono text-sm hover:text-[#C778DD] transition-colors"
+                                className="text-[var(--text-secondary)] font-mono text-sm hover:text-[var(--primary)] transition-colors"
                             >
                                 Contact
                             </Link>
@@ -122,102 +69,38 @@ export default function Footer() {
 
                     {/* Socials */}
                     <div>
-                        <h3 className="text-white font-mono font-bold text-base mb-4">
+                        <h3 className="text-[var(--text-primary)] font-mono font-bold text-base mb-4">
                             Social
                         </h3>
                         {/* flex-wrap add kora hoyeche jate onek link thakleo design na vange */}
                         <div className="flex items-center gap-4 flex-wrap">
-                            <a
-                                href="https://github.com/mhdnazrul"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors"
-                                aria-label="GitHub"
-                            >
-                                <Github />
-                            </a>
-                            <a
-                                href="https://linkedin.com/in/nazrulislam7"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors"
-                                aria-label="LinkedIn"
-                            >
-                                <Linkedin />
-                            </a>
-                            <a
-                                href="https://codeforces.com/profile/nazrulislam_7"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors"
-                                aria-label="Codeforces"
-                            >
-                                <Codeforces />
-                            </a>
-                            <a
-                                href="https://leetcode.com/u/mhdnazrul/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors"
-                                aria-label="LeetCode"
-                            >
-                                <LeetCode />
-                            </a>
-                            <a
-                                href="https://www.facebook.com/mhdnazrulislam.me"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors"
-                                aria-label="Facebook"
-                            >
-                                <Facebook />
-                            </a>
-                            <a
-                                href="https://twitter.com/nazrulislam__7"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors"
-                                aria-label="Twitter"
-                            >
-                                <Twitter />
-                            </a>
-                            <a
-                                href="https://wa.me/+8801610541511"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors"
-                                aria-label="WhatsApp"
-                            >
-                                <WhatsApp />
-                            </a>
-                            <a
-                                href="https://discord.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors"
-                                aria-label="Discord"
-                            >
-                                <Discord />
-                            </a>
-                            <a
-                                href="mailto:mhdnazrul511@gmail.com"
-                                className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors"
-                                aria-label="Email"
-                            >
-                                <MailIcon />
-                            </a>
+                            {profile.socials.map(({ id, label, href }) => {
+                                const Icon = SOCIAL_ICON_MAP[id];
+                                return Icon ? (
+                                    <a
+                                        key={id}
+                                        href={href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors"
+                                        aria-label={label}
+                                    >
+                                        <Icon size={20} />
+                                    </a>
+                                ) : null;
+                            })}
                         </div>
                     </div>
                 </div>
 
                 {/* Bottom Line */}
-                <div className="h-[1px] bg-[#ABB2BF] w-full mb-6"></div>
+                <div className="h-[1px] bg-[var(--border-subtle)] w-full mb-6"></div>
 
                 {/* Bottom: Copyright */}
                 <div className="text-center">
-                    <p className="text-[#ABB2BF] font-mono text-xs">
+                    <p className="text-[var(--text-secondary)] font-mono text-xs">
                         © Copyright 2026. Made by{' '}
-                        <span className="text-[#C778DD]">Nazrul Islam</span>
+                        <span className="text-[var(--primary)]">{profile.name}</span>
                     </p>
                 </div>
             </div>

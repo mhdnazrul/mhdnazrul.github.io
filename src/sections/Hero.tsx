@@ -1,24 +1,25 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Download, Mail } from 'lucide-react';
+import { Download } from 'lucide-react';
 import Image from 'next/image';
 import { TypeAnimation } from 'react-type-animation';
-import { fadeUp, staggerContainer } from '@/lib/animations';
+import {
+    fadeUp,
+    staggerContainer,
+    fadeInUp,
+    fadeInUpDelayed,
+} from '@/lib/animations';
+import { scrollToSection } from '@/lib/utils';
 import { profile } from '@/lib/data/profile';
 
 export default Hero;
 
 function Hero() {
-    const scrollToSection = (href: string) => {
-        const el = document.querySelector(href);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-    };
-
     return (
         <section
             id="home"
-            className="min-h-screen flex items-center relative overflow-hidden pt-24 pb-12 bg-[#282c33]"
+            className="min-h-screen flex items-center relative overflow-hidden pt-24 pb-12 bg-[var(--background)]"
         >
             <div className="px-6 lg:px-16 max-w-7xl mx-auto lg:px-0 w-full">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-4">
@@ -30,27 +31,18 @@ function Hero() {
                     >
                         <motion.h1
                             variants={fadeUp}
-                            className="text-[28px] md:text-4xl lg:text-5xl font-semibold leading-tight mb-8 font-mono text-white min-h-[90px] md:min-h-[100px]"
+                            className="text-[28px] md:text-4xl lg:text-5xl font-semibold leading-tight mb-8 font-mono text-[var(--text-primary)] min-h-[90px] md:min-h-[100px]"
                         >
                             Nazrul is a <br />
                             <span className="whitespace-nowrap">
                                 <TypeAnimation
-                                    sequence={[
-                                        'Full-Stack Developer',
-                                        2000,
-                                        'UI/UX Designer',
-                                        2000,
-                                        'Competitive Programmer',
-                                        2000,
-                                        'IoT Enthusiast',
-                                        2000,
-                                    ]}
+                                    sequence={[...profile.heroTaglines]}
                                     wrapper="span"
                                     speed={50}
                                     deletionSpeed={65}
                                     repeat={Infinity}
                                     cursor={true}
-                                    className="text-[#c778dd]"
+                                    className="text-[var(--primary)]"
                                 />
                             </span>
                         </motion.h1>
@@ -58,15 +50,9 @@ function Hero() {
                         {/* Subtitle */}
                         <motion.p
                             variants={fadeUp}
-                            className="text-[#ABB2BF] text-justify leading-relaxed mb-8 max-w-lg font-mono"
+                            className="text-[var(--text-secondary)] text-justify leading-relaxed mb-8 max-w-lg font-mono"
                         >
-                            I engineer comprehensive digital experiences by
-                            turning intricate logic into beautifully responsive
-                            web applications. Leveraging a strong foundation in
-                            data structures and modern web frameworks, I build
-                            robust system architectures that ensure both
-                            flawless backend performance and an engaging
-                            frontend user journey.
+                            {profile.heroSubtitle}
                         </motion.p>
 
                         {/* CTA Buttons */}
@@ -75,8 +61,8 @@ function Hero() {
                             className="flex flex-wrap gap-4 mt-8"
                         >
                             <button
-                                onClick={() => scrollToSection('#contact')}
-                                className="flex items-center gap-2 px-6 py-2 border border-[#c778dd] text-white font-mono text-sm hover:bg-[#c778dd]/10 transition-colors duration-200"
+                                onClick={() => scrollToSection('#contact-me')}
+                                className="flex items-center gap-2 px-6 py-2 border border-[var(--primary)] text-[var(--text-primary)] font-mono text-sm hover:bg-[var(--primary)]/10 transition-colors duration-200"
                                 aria-label="Contact me"
                             >
                                 Contact me!!
@@ -87,7 +73,7 @@ function Hero() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="Download Resume"
-                                className="flex items-center gap-2 px-6 py-2 border border-[#ABB2BF] text-[#ABB2BF] font-mono text-sm hover:border-white hover:text-white transition-colors duration-200"
+                                className="flex items-center gap-2 px-6 py-2 border border-[var(--border-subtle)] text-[var(--text-secondary)] font-mono text-sm hover:border-[var(--text-primary)] hover:text-[var(--text-primary)] transition-colors duration-200"
                             >
                                 Resume
                                 <Download size={16} />
@@ -97,9 +83,9 @@ function Hero() {
 
                     {/*  Right Content: Image & Graphics*/}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2, duration: 0.6 }}
+                        variants={fadeInUp}
+                        initial="hidden"
+                        animate="visible"
                         className="relative w-full lg:w-[40%] flex flex-col items-center lg:items-end mt-10 lg:mt-0"
                     >
                         <div className="relative flex flex-col items-center">
@@ -117,21 +103,21 @@ function Hero() {
                                         y="77.5"
                                         width="77"
                                         height="77"
-                                        stroke="#C778DD"
+                                        stroke="var(--primary)"
                                     />
                                     <rect
                                         x="77.5"
                                         y="0.5"
                                         width="77"
                                         height="77"
-                                        stroke="#C778DD"
+                                        stroke="var(--primary)"
                                     />
                                     <rect
                                         x="38.5"
                                         y="38.5"
                                         width="77"
                                         height="77"
-                                        stroke="#C778DD"
+                                        stroke="var(--primary)"
                                     />
                                 </svg>
                             </div>
@@ -152,7 +138,7 @@ function Hero() {
                                                 cx={10 + j * 16}
                                                 cy={10 + i * 16}
                                                 r="2"
-                                                fill="#ABB2BF"
+                                                fill="var(--text-secondary)"
                                             />
                                         )),
                                     )}
@@ -171,11 +157,11 @@ function Hero() {
                             </div>
 
                             {/* Status Box */}
-                            <div className="relative z-20 w-[280px] md:w-[320px] -mt-[1px] bg-[#282c33] border border-[#ABB2BF] p-2 flex items-center gap-3">
-                                <div className="w-4 h-4 bg-[#0000ff] shrink-0 " />
-                                <p className="text-[#ABB2BF] font-mono text-sm">
+                            <div className="relative z-20 w-[280px] md:w-[320px] -mt-[1px] bg-[var(--background)] border border-[var(--border-subtle)] p-2 flex items-center gap-3">
+                                <div className="w-4 h-4 bg-[var(--primary)] shrink-0 " />
+                                <p className="text-[var(--text-secondary)] font-mono text-sm">
                                     Currently working on{' '}
-                                    <span className="text-white font-bold">
+                                    <span className="text-[var(--text-primary)] font-bold">
                                         {profile.currentWork || 'Portfolio'}
                                     </span>
                                 </p>
@@ -186,12 +172,12 @@ function Hero() {
 
                 {/* Quote section */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6, duration: 0.6 }}
-                    className="mt-24 mx-auto border border-[#ABB2BF] p-6 max-w-x relative flex flex-col items-center"
+                    variants={fadeInUpDelayed}
+                    initial="hidden"
+                    animate="visible"
+                    className="mt-24 mx-auto border border-[var(--border-subtle)] p-6 max-w-x relative flex flex-col items-center"
                 >
-                    <div className="absolute -top-3 left-4 bg-[#282c33] px-2 text-[#ABB2BF]">
+                    <div className="absolute -top-3 left-4 bg-[var(--background)] px-2 text-[var(--text-secondary)]">
                         <svg
                             width="24"
                             height="24"
@@ -201,16 +187,14 @@ function Hero() {
                         >
                             <path
                                 d="M10 8H6C6 5.79 7.79 4 10 4V2C6.69 2 4 4.69 4 8V12H10V8ZM20 8H16C16 5.79 17.79 4 20 4V2C16.69 2 14 4.69 14 8V12H20V8Z"
-                                fill="#ABB2BF"
+                                fill="currentColor"
                             />
                         </svg>
                     </div>
-                    <p className="text-white text-justify font-mono text-lg text-center font-medium">
-                        Today, in the ecstasy of the joy of creation— My face
-                        laughs, my eyes laugh, my boiling blood laughs, Today,
-                        in the ecstasy of the joy of creation.
+                    <p className="text-[var(--text-primary)] text-justify font-mono text-lg text-center font-medium">
+                        {profile.quote.text}
                     </p>
-                    <div className="absolute -bottom-3 right-4 bg-[#282c33] px-2 text-[#ABB2BF]">
+                    <div className="absolute -bottom-3 right-4 bg-[var(--background)] px-2 text-[var(--text-secondary)]">
                         <svg
                             width="24"
                             height="24"
@@ -221,14 +205,13 @@ function Hero() {
                         >
                             <path
                                 d="M10 8H6C6 5.79 7.79 4 10 4V2C6.69 2 4 4.69 4 8V12H10V8ZM20 8H16C16 5.79 17.79 4 20 4V2C16.69 2 14 4.69 14 8V12H20V8Z"
-                                fill="#ABB2BF"
+                                fill="currentColor"
                             />
                         </svg>
                     </div>
-                    <div className="self-end mt-4 border-t border-[#ABB2BF] pt-2">
-                        <p className="text-[#ABB2BF] font-mono text-sm">
-                            Poem: "Srishti Sukher Ullase" || Book: "Dolonchapa"
-                            || Author: Kazi Nazrul Islam
+                    <div className="self-end mt-4 border-t border-[var(--border-subtle)] pt-2">
+                        <p className="text-[var(--text-secondary)] font-mono text-sm">
+                            {profile.quote.attribution}
                         </p>
                     </div>
                 </motion.div>
