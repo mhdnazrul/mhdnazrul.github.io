@@ -7,7 +7,6 @@ import { LogoMark } from '@/components/ui/Logo';
 
 import { profile } from '@/lib/data/profile';
 import { SOCIAL_ICON_MAP } from '@/components/ui/icons';
-import { scrollToSection } from '@/lib/utils';
 
 const navLinks = [
     { label: 'home', href: '#home' },
@@ -105,7 +104,8 @@ export default function Navbar() {
     const handleNavClick = (href: string) => {
         setActive(href);
         setIsOpen(false);
-        scrollToSection(href);
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
     };
 
     useEffect(() => {
@@ -215,7 +215,7 @@ export default function Navbar() {
                                 ))}
                             </ul>
 
-                            <div className="mb-auto">
+                            <div className="mb-12">
                                 <LanguageSwitcher />
                             </div>
 
