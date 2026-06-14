@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Nazrul Islam | Personal Portfolio 🚀
 
-First, run the development server:
+A modern, highly responsive personal portfolio website showcasing my journey as a Full-Stack Developer, Competitive Programmer, and Computer Science and Engineering (CSE) student at Premier University. 
 
+This project is built with a focus on clean architecture, smooth animations, and scalable design.
+
+## 🔗 [Live Demo](https://nazrul-dev.vercel.app/)
+
+## 👨‍💻 About Me
+I am a developer based in Chittagong, Bangladesh, with a strong passion for solving complex algorithmic problems using C++ and building full-stack web and mobile applications. When I am not competitive programming, I am experimenting with embedded systems, Linux environments, or creating content for my YouTube channel, Tech 2 Hi-Tek.
+
+## 🛠️ Tech Stack & Tools
+This portfolio is built using modern web technologies to ensure optimal performance and SEO.
+
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS & CSS Variables (Prepared for Light/Dark Mode)
+- **Animations:** Framer Motion
+- **Icons:** Lucide React & Custom SVGs
+- **Deployment:** Vercel
+
+## 🚀 Key Projects Featured
+Some of the prominent projects showcased in this portfolio include:
+- **cfclash:** A web application for competitive programming battles built with Next.js and Supabase.
+- **Hex Strategy Game:** An AI vs. Human strategy game featuring a 11x11 hexagonal grid, utilizing search-based algorithms.
+- **Shopfinity:** A functional e-commerce platform built with PHP and MySQL.
+- **IoT Smart Dustbin & Solar Tracker:** Hardware automation projects utilizing ESP8266 and ESP32 microcontrollers.
+
+## ⚙️ Getting Started (Local Development)
+
+To run this project locally on your machine, follow these steps:
+
+### Prerequisites
+Make sure you have Node.js and npm (or yarn/pnpm) installed.
+
+### Installation
+
+1. **Clone the repository:**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+   git clone https://github.com/mhdnazrul/mhdnazrul.github.io.git
+   cd mhdnazrul.github.io
 ```
 
+2. **Install dependencies:**
+
+```bash
+   npm install
+   # or
+   yarn install
+
+```
+
+3. **Start the development server:**
+
+```bash
+   npm run dev
+   # or
+   yarn dev
+
+```
+
+4. **View the project:**
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📂 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* `src/app/` - Next.js app router, layouts, and global CSS.
+* `src/components/` - Reusable UI components (Navbar, Footer, Centralized Icons, Sidebar).
+* `src/sections/` - Major page sections (Hero, About, Projects, Skills, Contact).
+* `src/lib/data/` - Centralized single-source-of-truth for all static data (profile, projects, skills).
 
-## Learn More
+## 📬 Let's Connect
 
-To learn more about Next.js, take a look at the following resources:
+Feel free to reach out for collaborations, project inquiries, or just a tech chat!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* **GitHub:** [@mhdnazrul](https://github.com/mhdnazrul)
+* **LinkedIn:** [Nazrul Islam](https://linkedin.com/in/nazrulislam7)
+* **Codeforces:** [nazrulislam_7](https://codeforces.com/profile/nazrulislam_7)
+* **Email:** mhdnazrul511@gmail.com
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*Designed & Built by Nazrul Islam*
