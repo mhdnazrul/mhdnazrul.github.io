@@ -12,7 +12,7 @@ export default function SocialSidebar() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
             // Fixed at top-0 and height auto to allow perfect hanging structure
-            className="fixed top-0 left-[17px] z-40 hidden flex-col items-center gap-4 bg-transparent lg:flex"
+            className="fixed top-0 left-[40px] z-40 hidden flex-col items-center gap-4 bg-transparent lg:flex"
             aria-label="Social media links"
         >
             {/* Vertical line hanging from the TOP — 191px per Figma */}
