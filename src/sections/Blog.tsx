@@ -83,8 +83,8 @@ function BlogCard({ post }: { post: BlogPost }) {
 
 export default function Blog() {
     return (
-        <section id="blog" className="py-20 px-6 lg:px-16 max-w-7xl mx-auto">
-            <SectionHeading title="blog" />
+        <section id="blogs" className="py-20 px-6 lg:px-16 max-w-7xl mx-auto">
+            <SectionHeading title="blogs" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {blogPosts.map((post) => (
                     <BlogCard key={post.id} post={post} />
