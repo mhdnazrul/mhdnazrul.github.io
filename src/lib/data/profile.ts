@@ -66,7 +66,7 @@ export const profile = {
             id: 'leetcode',
             label: 'LeetCode',
             value: 'LeetCode',
-            href: 'https://leetcode.com/u/mhdnazrul/',
+            href: 'https://leetcode.com/u/nazrulislam_7/',
         },
         {
             id: 'facebook',
@@ -78,7 +78,7 @@ export const profile = {
             id: 'twitter',
             label: 'Twitter',
             value: 'Twitter',
-            href: 'https://twitter.com/nazrulislam__7',
+            href: 'https://twitter.com/nazrulislam_07',
         },
         {
             id: 'whatsapp',
@@ -90,7 +90,7 @@ export const profile = {
             id: 'discord',
             label: 'Discord',
             value: 'Discord',
-            href: 'https://discord.com/nazrulislam_7/',
+            href: 'https://discord.com/nazrulislam_7',
         },
         {
             id: 'email',

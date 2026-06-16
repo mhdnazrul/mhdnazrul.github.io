@@ -126,7 +126,7 @@ export const projects: Project[] = [
         buttons: [
             {
                 label: 'GitHub',
-                href: 'https://github.com/mhdnazrul/Smart-Dustbin-Using-IoT-ESP8266',
+                href: 'https://github.com/mhdnazrul/Smart-Dustbin-Using-IoT-ESP8266-',
             },
         ],
         category: 'small-projects',
